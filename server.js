@@ -19,9 +19,18 @@ const db = mysql.createConnection(
   console.log("Connected to the election database.")
 );
 
-//query the database to test connection
-db.query(`SELECT * FROM candidates`, (err, rows) => {
-  console.log(rows);
+//Get all candidates
+// db.query(`SELECT * FROM candidates`, (err, rows) => {
+//   console.log(rows);
+// });
+
+//get a single candidate
+db.query(`Select * FROM candidates WHERE id=1`, (err, row) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(row);
+  }
 });
 
 //Default response for any other request (Not Found)
