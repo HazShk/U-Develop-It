@@ -1,4 +1,6 @@
 const express = require("express");
+const { param } = require("express/lib/request");
+const res = require("express/lib/response");
 const mysql = require("mysql2");
 
 const PORT = process.env.PORT || 3001;
@@ -24,21 +26,34 @@ const db = mysql.createConnection(
 //   console.log(rows);
 // });
 
-//get a single candidate
-db.query(`Select * FROM candidates WHERE id= 1`, (err, row) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(row);
-  }
-});
+// //get a single candidate
+// db.query(`Select * FROM candidates WHERE id= 1`, (err, row) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(row);
+//   }
+// });
 
-//Delete a candidate ,"?" is a placeholder
-db.query(`Delete FROM candidates WHERE id = ?`, 1, (err, result) => {
-  if (err) {
-    console.log(err);
-  } else console.log(result);
-});
+// // // //Delete a candidate ,"?" is a placeholder
+// // // db.query(`Delete FROM candidates WHERE id = ?`, 1, (err, result) => {
+// // //   if (err) {
+// // //     console.log(err);
+// // //   } else console.log(result);
+// // // });
+
+// // //Create a candidate
+// // const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected)
+// //               VALUES (?,?,?,?)`;
+// // const params = [1, "Ronald", "Firbank", 1];
+
+// // db.query(sql, params, (err, result) => {
+// //   if (err) {
+// //     console.log(err);
+// //   } else {
+// //     console.log(result);
+// //   }
+// // });
 
 //Default response for any other request (Not Found)
 app.use((req, res) => {
